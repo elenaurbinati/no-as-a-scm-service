@@ -1,0 +1,56 @@
+npm init -y
+npm install express cors
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+
+const reasons = [
+  "mangiare tutti gli ovetti che ha portato Lucia",
+  "fare il giretto post pranzo",
+  "schricchettare un ordine E-Shop",
+  "deflaggare 200 matricole",
+  "caricare le SKU per il sito Spagna",
+  "farmi offrire uno spritz da Adam e Doikas",
+  "andare a vendere barattoli in Polonia",
+  "sabotare il telefono dell'E-Shop",
+  "aspettare il lancio del maker",
+  "chiedere a Laura Paci dove andare alle terme il prossimo weekend",
+  "nascondere a Filo il dolce della mensa",
+  "cringiare malissimo per i banner EDM che ci propone l'agenzia",
+  "chiedere a Luca di abbassare la musica",
+  "fare onboarding al gatto di Villa Mare",
+  "aspettare che un cliente faccia un ordine inserendo 10 coupon",
+  "andare a vendere elettromandrini in spiaggia",
+  "chiedere a Polidori di azzerare lo stock USA",
+  "scommettere un vassoio di paste su quale sarà il nuovo nome di Maestro Connect",
+  "andare a vendere i carrellini minimax ease in Olanda",
+  "chiedere a Michele a che punto è il rebranding di Maestro Connect",
+  "rispondere a Simon Nanni",
+  "chiedere ad Anna di farmi fare il tour dell'Autostore",
+  "fare corse clandestine con i robottini dell'Autostore",
+  "mettere 'È finita la pace' di Marracash solo per infastidire Elena",
+  "cantare 'What Was I made for?' in versione gatto per infastidire Luca",
+  "spegnere la luce uscendo dalla stanza dicendo 'There's no planet B'",
+  "aspettare che Isi torni da Thienerife",
+  "vedere quale dolcevita ha messo Lorenzo oggi",
+  "scordarmi con chi devo andare a pranzo oggi che sono a Rimini",
+  "farmi squadrare dall'alto in basso da quelli della portineria di Rimini nonostante mi vedano tutte le settimane",
+  "guardare gli uccelli che sbattono contro la finestra dell'ufficio",
+  "aspettare che spegnano i riscaldamenti dell'ufficio",
+  "nascondere il tablet di Lorenzo in un posto che non riesce a raggiungere",
+  "scegliere la mia squadra per il FantaSCM (e arrivare comunque ultimo)"
+];
+
+app.get('/api/no', (req, res) => {
+  const reason = reasons[Math.floor(Math.random() * reasons.length)];
+  res.json({ message: `Ora non posso perché prima devo ${reason}` });
+});
+
+app.listen(PORT, () => {
+  console.log(`🚫 no-as-a-service is running on http://localhost:${PORT}`);
+});
+
